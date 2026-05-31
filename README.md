@@ -1,54 +1,57 @@
-# 🚀 Linux Log Rotation & Backup Automation System
+# Linux Log Automation & Backup System 🚀
 
-A DevOps-style automation project that handles log rotation, backups, and scheduled maintenance using Bash scripting and cron jobs.
-
----
-
-## 📌 Features
-
-- Compress `.log` files older than 7 days
-- Delete `.gz` files older than 30 days
-- Create timestamped backups (`tar.gz`)
-- Verify backup creation & print metadata
-- Auto cleanup of old backups (14 days retention)
-- Centralized logging system
-- Cron-based scheduling (1 AM daily)
+A DevOps practice project that automates **log rotation, backups, and scheduled maintenance** using Bash scripting and cron jobs.
 
 ---
 
-## 🏗️ Architecture
+## 🔥 Features
 
-Log Rotation → Backup Creation → Maintenance Orchestrator → Cron Scheduler
+- Compress logs older than 7 days
+- Delete compressed logs older than 30 days
+- Create timestamped backups using tar.gz
+- Validate backup creation
+- Log all system activities
+- Automated execution using cron (1 AM daily)
 
 ---
+
+## 🛠️ Tech Stack
+
+- Linux (Ubuntu)
+- Bash Scripting
+- cron scheduling
+- tar + gzip
+- find, awk, du utilities
+
+---
+
+## 📂 Scripts Overview
+
+### 1. log_rotate.sh
+- Finds `.log` files older than 7 days
+- Compresses them using gzip
+- Deletes `.gz` files older than 30 days
+
+---
+
+### 2. backup.sh
+- Creates timestamped backups
+- Example: `backup-2026-05-30.tar.gz`
+- Verifies backup creation
+- Deletes backups older than 14 days
+
+---
+
+### 3. maintenance.sh
+- Combines log rotation + backup
+- Logs all output to `/var/log/maintenance.log`
+- Designed for cron automation
+
+---
+
+## ⏰ Cron Job
+
+Run maintenance daily at 1 AM:
+
 ```bash
-linux-log-automation/
-│
-├── scripts/
-│   ├── log_rotate.sh
-│   ├── backup.sh
-│   └── maintenance.sh
-│
-├── config/
-│   └── paths.conf
-│
-├── logs/
-│   └── maintenance.log   (runtime generated)
-│
-├── backups/              (runtime generated)
-│
-├── README.md
-├── .gitignore
-└── LICENSE
-```
-
-## ⚙️ How to Run
-
-```bash
-chmod +x scripts/*.sh
-
-./scripts/log_rotate.sh /var/log/myapp /home/ubuntu/backups
-
-./scripts/backup.sh /home/ubuntu/files /home/ubuntu/files_backups
-
-./scripts/maintenance.sh
+0 1 * * * bash /home/ubuntu/linux-log-automation/scripts/maintenance.sh
