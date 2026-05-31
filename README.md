@@ -22,6 +22,26 @@ Log Rotation → Backup Creation → Maintenance Orchestrator → Cron Scheduler
 
 ---
 
+linux-log-automation/
+│
+├── scripts/
+│   ├── log_rotate.sh
+│   ├── backup.sh
+│   └── maintenance.sh
+│
+├── config/
+│   └── paths.conf
+│
+├── logs/
+│   └── maintenance.log   (runtime generated)
+│
+├── backups/              (runtime generated)
+│
+├── README.md
+├── .gitignore
+└── LICENSE
+---
+
 ## ⚙️ How to Run
 
 ```bash
