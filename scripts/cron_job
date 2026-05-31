@@ -1,0 +1,6 @@
+⏰ Cron Job
+
+Run daily at 1 AM:
+```bash
+0 1 * * * bash /home/ubuntu/linux-log-automation/scripts/maintenance.sh
+```
