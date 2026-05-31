@@ -21,7 +21,7 @@ A DevOps-style automation project that handles log rotation, backups, and schedu
 Log Rotation → Backup Creation → Maintenance Orchestrator → Cron Scheduler
 
 ---
-
+```bash
 linux-log-automation/
 │
 ├── scripts/
@@ -40,7 +40,7 @@ linux-log-automation/
 ├── README.md
 ├── .gitignore
 └── LICENSE
----
+```
 
 ## ⚙️ How to Run
 
