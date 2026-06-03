@@ -1,213 +1,242 @@
-🚀 Linux Log Automation & Backup System
+# 🚀 Linux Log Automation & Backup System
 
 A Bash scripting project that automates:
 
-* 📦 Directory Backups
-* 📝 Log Rotation
-* 🗑️ Old Backup Cleanup
-* ⏰ Scheduled Maintenance with Cron
+- 📦 Directory Backups
+- 📝 Log Rotation
+- 🗑️ Old Backup Cleanup
+- ⏰ Scheduled Maintenance with Cron
 
 This project demonstrates Linux administration and DevOps automation skills commonly used in production environments.
 
-⸻
+---
 
-📂 Project Structure
+## 📂 Project Structure
 
+```text
 linux-log-automation/
-│
 ├── scripts/
 │   ├── backup.sh
 │   ├── log_rotate.sh
 │   └── maintenance.sh
-│
 ├── backups/
 ├── files_backups/
 └── README.md
+```
 
-⸻
+---
 
-✨ Features
+## ✨ Features
 
-📦 Backup Automation
+### 📦 Backup Automation
 
-The backup.sh script:
+The `backup.sh` script:
 
-* Validates source directory
-* Creates destination directory automatically
-* Creates timestamped backups
-* Compresses files using tar.gz
-* Displays backup size
-* Removes backups older than 14 days
+- Validates source directory
+- Creates destination directory automatically
+- Creates timestamped backups
+- Compresses files using tar.gz
+- Displays backup size
+- Removes backups older than 14 days
 
-Example:
+#### Example
 
+```bash
 bash backup.sh /home/ubuntu/files /home/ubuntu/files_backups
+```
 
-⸻
+---
 
-📝 Log Rotation
+### 📝 Log Rotation
 
-The log_rotate.sh script:
+The `log_rotate.sh` script:
 
-* Compresses .log files older than 7 days
-* Uses gzip compression
-* Deletes compressed logs older than 30 days
-* Displays processed file counts
+- Compresses `.log` files older than 7 days
+- Uses gzip compression
+- Deletes compressed logs older than 30 days
+- Displays processed file counts
 
-Example:
+#### Example
 
+```bash
 bash log_rotate.sh /var/log/myapp /home/ubuntu/backups
+```
 
-⸻
+---
 
-🔧 Maintenance Automation
+### 🔧 Maintenance Automation
 
-The maintenance.sh script:
+The `maintenance.sh` script:
 
-* Executes log rotation
-* Executes backups
-* Records execution logs
-* Captures script output and errors
-* Provides centralized maintenance workflow
+- Executes log rotation
+- Executes backups
+- Records execution logs
+- Captures script output and errors
+- Provides centralized maintenance workflow
 
-Log location:
+#### Log Location
 
+```text
 /var/log/maintenance.log
+```
 
-⸻
+---
 
-⏰ Cron Job Setup
+## ⏰ Cron Job Setup
 
-Run maintenance automatically every day at 1:00 AM.
+Run maintenance automatically every day at **1:00 AM**.
 
-Edit crontab:
+### Edit Crontab
 
+```bash
 crontab -e
+```
 
-Add:
+### Add the Following Entry
 
+```bash
 0 1 * * * bash /home/ubuntu/linux-log-automation/scripts/maintenance.sh
+```
 
-Cron Breakdown:
+### Cron Breakdown
 
-Expression	Meaning
-0	Minute 0
-1	1 AM
-*	Every Day
-*	Every Month
-*	Every Weekday
+| Expression | Meaning |
+|------------|----------|
+| 0 | Minute 0 |
+| 1 | 1 AM |
+| * | Every Day |
+| * | Every Month |
+| * | Every Weekday |
 
-⸻
+---
 
-🛠️ Prerequisites
+## 🛠️ Prerequisites
 
-* Linux (Ubuntu/CentOS/RHEL)
-* Bash
-* tar
-* gzip
-* cron
+- Linux (Ubuntu/CentOS/RHEL)
+- Bash
+- tar
+- gzip
+- cron
 
-Verify:
+### Verify Installation
 
+```bash
 tar --version
 gzip --version
 crontab -l
+```
 
-⸻
+---
 
-🚀 Installation
+## 🚀 Installation
 
-Clone the repository:
+### Clone the Repository
 
+```bash
 git clone https://github.com/your-username/linux-log-automation.git
+```
 
-Move to project directory:
+### Move to Project Directory
 
+```bash
 cd linux-log-automation
+```
 
-Provide execute permissions:
+### Provide Execute Permissions
 
+```bash
 chmod +x scripts/*.sh
+```
 
-Run manually:
+### Run Manually
 
+```bash
 bash scripts/maintenance.sh
+```
 
-⸻
+---
 
-📋 Sample Output
+## 📋 Sample Output
 
-Backup Script
+### Backup Script
 
+```text
 Backup Success
 Archive: backup-2026-06-03-01-00-00.tar.gz
 Size: 120M
+```
 
-Log Rotation Script
+### Log Rotation Script
 
+```text
 Compressed files: 12
 Deleted files: 3
+```
 
-⸻
+---
 
-⚠️ Error Handling
+## ⚠️ Error Handling
 
-The scripts include validation checks:
+The scripts include validation checks.
 
-Source Directory Validation
+### Source Directory Validation
 
+```bash
 if [ ! -d "$source" ]; then
     echo "Error: Source directory does not exist"
     exit 1
 fi
+```
 
-Exit Codes
+### Exit Codes
 
-Code	Description
-0	Success
-1	Failure
+| Code | Description |
+|------|-------------|
+| 0 | Success |
+| 1 | Failure |
 
-⸻
+---
 
-🎯 Skills Demonstrated
+## 🎯 Skills Demonstrated
 
-Linux Administration
+### Linux Administration
 
-* File Management
-* Log Management
-* Backup Operations
+- File Management
+- Log Management
+- Backup Operations
 
-Shell Scripting
+### Shell Scripting
 
-* Variables
-* Conditionals
-* Command Substitution
-* Error Handling
+- Variables
+- Conditional Statements
+- Command Substitution
+- Error Handling
+- File Operations
 
-DevOps Fundamentals
+### DevOps Fundamentals
 
-* Automation
-* Cron Scheduling
-* System Maintenance
-* Operational Reliability
+- Automation
+- Cron Scheduling
+- System Maintenance
+- Operational Reliability
 
-⸻
+---
 
-🔮 Future Improvements
+## 🔮 Future Improvements
 
-* Email alerts on failures
-* AWS S3 backup integration
-* Backup verification checks
-* Configurable retention periods
-* Monitoring dashboard
-* Multi-directory backup support
+- Email notifications on failures
+- AWS S3 backup integration
+- Backup integrity verification
+- Configurable retention policies
+- Monitoring dashboard
+- Multi-directory backup support
 
-⸻
+---
 
-👨‍💻 Author
+## 👨‍💻 Author
 
-Aman
+**Aman**
 
 Cloud | DevOps | Linux Enthusiast
 
-Passionate about automation, cloud infrastructure, Linux administration, and DevOps practi
+Passionate about automation, cloud infrastructure, Linux administration, and DevOps practices.
