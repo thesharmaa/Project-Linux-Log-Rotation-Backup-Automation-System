@@ -25,5 +25,5 @@ else
     exit 1
 fi
 
-# delete backups older than 14 days
+# deleting backups older than 14 days
 find "$destination" -name "*.tar.gz" -mtime +14 -delete
