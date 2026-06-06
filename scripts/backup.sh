@@ -14,6 +14,7 @@ timestamp=$(date +'%Y-%m-%d-%H-%M-%S')
 
 backup_file="${destination}/backup-${timestamp}.tar.gz"
 
+#using tar to create a compressed archive of the source directory
 tar -czf "$backup_file" "$source"
 
 if [ -f "$backup_file" ]; then
